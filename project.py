@@ -206,7 +206,9 @@ def gconnect():
     output += '!</h1>'
     output += '<img src="'
     output += login_session['picture']
-    output += ' " style = "width: 300px; height: 300px;border-radius: 150px;-webkit-border-radius: 150px;-moz-border-radius: 150px;"> '
+    output += ' " style = "width: 300px; height: 300px;' 
+    output += 'border-radius: 150px;-webkit-border-radius: 150px;' 
+    output += '-moz-border-radius: 150px;">' 
     flash("you are now logged in as %s" % login_session['username'])
     return output
 
@@ -214,8 +216,8 @@ def gconnect():
 
 
 def createUser(login_session):
-    newUser = User(name=login_session['username'], email=login_session[
-                   'email'], picture=login_session['picture'])
+    newUser = User(name=login_session['username'], email=login_session
+              ['email'], picture=login_session['picture'])
     session.add(newUser)
     session.commit()
     user = session.query(User).filter_by(email=login_session['email']).one()
